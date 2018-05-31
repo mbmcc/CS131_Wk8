@@ -10,7 +10,8 @@ Package’s constructor should initialize these data members.
 Ensure that the weight and cost per ounce contain positive values. 
 Package should provide a public member function calculateCost that returns a double indicating the cost associated with shipping the package. Package’s calculateCost function should determine the cost by multiplying the weight by the cost per ounce. 
 Derived class TwoDayPackage should inherit the functionality of base class Package, 
-but also include a data member that represents a flat fee that the shipping company charges for two-day-delivery service. TwoDayPackage’s constructor should receive a value to initialize this data member. TwoDayPackage should redefine member function calculateCost so that it computes the shipping cost by adding the flat fee to the weight-based cost calculated by base class Package’s calculateCost function. Class OvernightPackage should inherit directly from class Package and contain an additional data member representing an additional fee per ounce charged for overnight-delivery service. OvernightPackage should redefine member function calculateCost so that it adds the additional fee per ounce to the standard cost per ounce before calculating the shipping cost. Write a test program that creates objects of each type of Package and tests member function calculateCost.
+but also include a data member that represents a flat fee that the shipping company charges for two-day-delivery service. TwoDayPackage’s constructor should receive a value to initialize this data member. TwoDayPackage should redefine member function calculateCost so that it computes the shipping cost by adding the flat fee to the weight-based cost calculated by base class Package’s calculateCost function. Class OvernightPackage should inherit directly from class Package and contain an additional data member representing an additional fee per ounce charged for overnight-delivery service. OvernightPackage should redefine member function calculateCost so that it adds the additional fee per ounce to the standard cost per ounce before calculating the shipping cost. 
+Write a test program that creates objects of each type of Package and tests member function calculateCost.
 
 --------
 
@@ -34,6 +35,8 @@ Checklist:
  + [ ] include child class OvernightPackage to derive from package
     + [ ] additional data member representing an additional fee per ounce charged for overnight-delivery service.
     + [ ] OvernightPackage should redefine member function calculateCost so that it adds the additional fee per ounce to the standard cost per ounce before calculating the shipping cost.
-
+-----
+Skeletons for the header file and class implimentation created.
+All logical work / creation being worked in the main.cpp unil operational.
 
  
