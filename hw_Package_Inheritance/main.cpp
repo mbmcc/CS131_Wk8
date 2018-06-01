@@ -12,9 +12,9 @@
 /********************
 * Checklist:
 *  + [x] Use class Package as the base class of the hierarchy
-*     + [ ] Contstructor init members
+*     + [x] Contstructor init members
 *     + [ ] weight and cost are positive 
-*     + [x] ] public member function calculateCost that returns a double indicating the cost associated with shipping the package
+*     + [x] public member function calculateCost that returns a double indicating the cost associated with shipping the package
 *     + [x] Sender and Receiver have:
 *         + [x] Name
 *         + [x] City
@@ -34,58 +34,100 @@
 ********************/
 
 #include <iostream>
-#include <string>
+
 
 using namespace std;
 
-class Package(
-    public:
+class Package{
+  public:
+  Package(){
+  pkgWeight = 0;
+  costPerOZ = 0;
+  }
       double calculateCost(){
-        return pkgWeight * costPerOZ;
+        return pkgWeight * costPerOZ / 100;
       }
-      unsigned int setWeight(iWeight){
-        return pkgWeight = iWeight;
+      void setWeight(int iWeight){
+         if (iWeight < 0)
+          iWeight *= -1;
+        pkgWeight = iWeight;
       }
-      unsigned int setCost(iCost){
-        return costPerOZ = iCost;
+      void setCost(int iCost){
+        if (iCost < 0)
+          iCost *= -1;
+        costPerOZ = iCost;
+      }
+      void displayValues(){
+        std::cout << "pkgWeight = " << pkgWeight << endl;
+        std::cout << "costPerOZ = " << costPerOZ << endl;
       }
         
-    private:
+    protected:
       string Name;
       string City;
       string State;
       string Address;
       int ZIP;
       
-      unsigned int pkgWeight;
-      unsigned int costPerOZ;
-);
+      int pkgWeight; //value in cents
+      int costPerOZ; //weight in ounces
+  };
 
-class TwoDayPackage : private Package (
+class TwoDayPackage : public Package {
     public: 
+    TwoDayPackage(){
+      flatFee = 20; //dollars
+    }
       double calculateCost (){
-        return flatFee
+        return flatFee;
       }
     private:
       int flatFee; 
-);
+};
 
-class OvernightPackage : private Package (
+class OvernightPackage : public Package {
     public: 
+    OvernightPackage(){
+      overnightFee = 10; // per oz
+    }
       double calculateCost () {
-        return  (pkgWeight * costPerOZ) + (pkgWeight * overnightFee);
+        costPerOZ = (pkgWeight * costPerOZ) + (pkgWeight * overnightFee);
+        return costPerOZ;
       }
     private:
       int overnightFee;
-);
+};
 
-/********** Contstructors *********/
-Package::Package
-/********** End Contstructors *********/
+
 /********** Begin Main *********/
 int main(){
-  Package 20180531001; //name of the oject is YYYYMMDDNumber
-  20180531001.calculateCost
-    return 0;
-}
+  double cost = 0;
+  int cents = 50; 
+  int ounces = 32;
+  
+    
+  Package standard;
+  standard.setCost(cents);  
+  standard.setWeight(ounces);
+  standard.displayValues();
+  cost = standard.calculateCost(); // output in dollars
+  cout << "The cost of standard shipping is " << cost << " dollars. \n"<<endl;
+  
+  TwoDayPackage faster;
+  faster.setCost(cents);
+  faster.setWeight(ounces);
+  faster.displayValues();
+  cost = faster.calculateCost();
+  cout << "The cost of two day shipping is " << cost << " dollars. \n"<<endl;
+  
+  OvernightPackage asap;
+  asap.setCost(cents);
+  asap.setWeight(ounces);
+  asap.displayValues();
+  cost = asap.calculateCost();
+  cout << "The cost of overnight shipping is " << cost << " dollars. \n"<<endl;
+  
+  
+  return 0;
+};
 /********* End Main *********/
