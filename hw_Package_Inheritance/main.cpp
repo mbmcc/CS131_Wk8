@@ -13,7 +13,7 @@
 * Checklist:
 *  + [x] Use class Package as the base class of the hierarchy
 *     + [x] Contstructor init members
-*     + [ ] weight and cost are positive 
+*     + [x] weight and cost are positive 
 *     + [x] public member function calculateCost that returns a double indicating the cost associated with shipping the package
 *     + [x] Sender and Receiver have:
 *         + [x] Name
